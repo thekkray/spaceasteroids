@@ -9,8 +9,7 @@ public class HighscoreTextUpdater : MonoBehaviour
 	void Awake()
 	{
 		m_Text = this.GetComponent<Text>() as Text;
-		if( m_Text == null )
-			Debug.LogError( "Text component not found!" );
+		Debug.Assert( m_Text, "Text component not found!" );
 	}
 
 	void OnScoreChanged( int new_score )

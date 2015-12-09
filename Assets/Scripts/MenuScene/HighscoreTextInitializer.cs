@@ -4,16 +4,19 @@ using UnityEngine.UI;
 [RequireComponent( typeof( Text ) )]
 public class HighscoreTextInitializer : MonoBehaviour
 {
+	private Text m_Text = null;
+
+	void Awake()
+	{
+		m_Text = this.GetComponent<Text>() as Text;
+		Debug.Assert( m_Text, "Text component not found!" );
+	}
+
 	void Start()
 	{
-		Text t = this.GetComponent<Text>() as Text;
-		if( t )
+		if( m_Text )
 		{
-			t.text = string.Format( t.text, PlayerPrefsHelper.GetHighscore() );
-		}
-		else
-		{
-			Debug.LogError( "Text component not found!" );
+			m_Text.text = string.Format( m_Text.text, PlayerPrefsHelper.GetHighscore() );
 		}
 	}
 }
