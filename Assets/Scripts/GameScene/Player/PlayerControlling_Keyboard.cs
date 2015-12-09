@@ -3,7 +3,7 @@ using System.Collections;
 
 [RequireComponent( typeof( PlayerMoving ) )]
 [RequireComponent( typeof( PlayerShooting ) )]
-public class PlayerController_Keyboard : MonoBehaviour
+public class PlayerControlling_Keyboard : MonoBehaviour
 {
 	public KeyCode m_RotateRightKey = KeyCode.RightArrow;
 	public KeyCode m_RotateLeftKey = KeyCode.LeftArrow;
