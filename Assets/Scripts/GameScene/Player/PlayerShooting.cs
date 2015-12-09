@@ -14,8 +14,6 @@ public class PlayerShooting : MonoBehaviour
 
 	public void Shoot()
 	{
-		Debug.Log( "Bang!" );
-
 		if( m_BulletPrefab )
 		{
 			for( int i = 0; i < m_GunTips.Length; i++ )

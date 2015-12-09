@@ -8,7 +8,7 @@ public class PlayerControlling_Keyboard : MonoBehaviour
 	public KeyCode m_RotateRightKey = KeyCode.RightArrow;
 	public KeyCode m_RotateLeftKey = KeyCode.LeftArrow;
 	public KeyCode m_AccelerateKey = KeyCode.UpArrow;
-	public KeyCode m_ShootKey = KeyCode.Space;
+	public KeyCode m_ShootKey = KeyCode.LeftControl;
 
 	private PlayerMoving m_PlayerMoving = null;
 	private PlayerShooting m_PlayerShooting = null;
