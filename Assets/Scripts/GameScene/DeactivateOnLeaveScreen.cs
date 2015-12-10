@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class DestroyOnLeaveScreen : MonoBehaviour
+public class DeactivateOnLeaveScreen : MonoBehaviour
 {
 	// objects radious for "out of the screen" detecting
 	// may be differ from collider's radius, graphics boundary, etc.
@@ -18,7 +18,7 @@ public class DestroyOnLeaveScreen : MonoBehaviour
         }
 	}
 
-	void FixedUpdate()
+	void Update()
 	{
 		if( Camera.main == null )
 			return;
@@ -39,7 +39,7 @@ public class DestroyOnLeaveScreen : MonoBehaviour
 			this.transform.position.y + m_ObjectRadius < world_edge_bottom
 		)
 		{
-			Destroy( this.gameObject );
+			this.gameObject.SetActive( false );
 		}
 	}
 }

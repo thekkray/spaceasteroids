@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Bullet : MonoBehaviour
+public class MoveAlongRelativeY : MonoBehaviour
 {
 	public float m_Speed = 10.0f;
 	
