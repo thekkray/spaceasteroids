@@ -9,11 +9,4 @@ public class Bullet : MonoBehaviour
 	{
 		this.transform.Translate( Vector3.up * m_Speed * Time.deltaTime );
 	}
-
-	void OnBecameInvisible()
-	{
-		Debug.Log( "!!!!!!!!!" );
-	}
-
-
 }
