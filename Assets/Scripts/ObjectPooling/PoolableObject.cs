@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PooledObject : MonoBehaviour
+public class PoolableObject : MonoBehaviour
 {
-	public ObjectsPool m_PoolObject = null;
+	public PoolOfObjects m_PoolObject = null;
 
 	void Start()
 	{

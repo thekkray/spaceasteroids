@@ -3,7 +3,7 @@ using System.Collections;
 
 public class PlayerShooting : MonoBehaviour
 {
-	public ObjectsPool m_BulletsPool = null;
+	public PoolOfObjects m_BulletsPool = null;
 	public Transform[] m_GunTips;
 
 	void Awake()
