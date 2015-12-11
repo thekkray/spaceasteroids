@@ -49,6 +49,11 @@ public class PoolOfObjects : MonoBehaviour
 		m_InactiveObjects.Enqueue( obj.gameObject );
 	}
 
+	public int GetActiveObjectsNum()
+	{
+		return this.transform.childCount - m_InactiveObjects.Count;
+	}
+
 	private GameObject SpawnNew( Vector3 position, Quaternion rotation )
 	{
 		GameObject obj = null;

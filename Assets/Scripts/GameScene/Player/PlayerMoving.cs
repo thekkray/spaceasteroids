@@ -10,10 +10,12 @@ public class PlayerMoving : MonoBehaviour
 	private bool m_Accellerating = false;
 
 	private Vector3 m_Inertia = Vector3.zero;
+	private Transform m_StartTransform;
 
-	void Awake()
+	void Start()
 	{
-	}
+		m_StartTransform = this.transform;
+    }
 
 	public void StartRotation_Right()
 	{
@@ -60,6 +62,13 @@ public class PlayerMoving : MonoBehaviour
 		{
 			m_Inertia += this.transform.up * m_AccelerationForce * Time.deltaTime;
 		}
+	}
+
+	void ResetToStartPosition()
+	{
+		this.transform.position = m_StartTransform.position;
+		this.transform.rotation = m_StartTransform.rotation;
+		m_Inertia = Vector3.zero;
 	}
 
 }
