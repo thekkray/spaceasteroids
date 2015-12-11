@@ -30,6 +30,15 @@ public class Bullet : MonoBehaviour
 
 		Debug.Assert( m_Rigidbody2D, "Rigidbody2D component not found!", this.gameObject );
 		Debug.Assert( m_TagsToDeactivate.Length > 0, "Please fill a list of tags!", this.gameObject );
+		
+		// we use OnTriggerEnter2D method, so we should check the collider
+		// it should have isTrigger checkbox checked
+		Collider2D collider = this.GetComponent<Collider2D>() as Collider2D;
+		Debug.Assert( collider, "Collider2D component not found", this.gameObject );
+		if( collider )
+		{
+			Debug.Assert( collider.isTrigger, "Collider should be in trigger mode!", this.gameObject );
+		}
 	}
 
 	void OnEnable()
@@ -40,21 +49,6 @@ public class Bullet : MonoBehaviour
 		if( m_Rigidbody2D )
 		{
 			m_Rigidbody2D.AddRelativeForce( m_StartRelativeForce );
-		}
-	}
-
-	void OnValidate()
-	{
-		// we use OnTriggerEnter2D method, so we should check the collider
-		// it should have isTrigger checkbox checked
-
-		Collider2D collider = this.GetComponent<Collider2D>() as Collider2D;
-
-		Debug.Assert( collider, "Collider2D component not found", this.gameObject );
-
-		if( collider )
-		{
-			Debug.Assert( collider.isTrigger, "Collider should be in trigger mode!", this.gameObject );
 		}
 	}
 
