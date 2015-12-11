@@ -1,26 +1,31 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// <summary>
+/// Game manager
+/// Spawns Rocks and Player
+/// Controlls progression through sessions
+/// </summary>
+
 public class GameManager : MonoBehaviour
 {
+	// conf
 	public PoolOfObjects m_PoolOfLargeRocks = null;
 	public Transform m_RockSpawnPointsParent = null;
 	public int m_RocksNumIncreaseStep = 0;
 
+	// private
 	private int m_CurrentSessionIndex = -1;
 
-	void Awake()
+	void Start()
 	{
 		Debug.Assert( m_PoolOfLargeRocks, "Assign a PoolOfLargeRocks on the Inspector!", this.gameObject );
 		Debug.Assert( m_RockSpawnPointsParent, "Assign a RockSpawnPointsParent on the Inspector!", this.gameObject );
 		Debug.Assert( m_RocksNumIncreaseStep != 0, "Rocks num should differ from zero!", this.gameObject );
-	}
 
-	void Start()
-	{
 		StartNextSession();
 	}
-	
+
 	public void StartNextSession()
 	{
 		m_CurrentSessionIndex++;
