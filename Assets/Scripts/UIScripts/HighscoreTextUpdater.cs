@@ -12,7 +12,7 @@ public class HighscoreTextUpdater : MonoBehaviour
 		Debug.Assert( m_Text, "Text component not found!" );
 	}
 
-	void OnScoreChanged( int new_score )
+	public void OnScoreChanged( int new_score )
 	{
 		if( m_Text )
 			m_Text.text = new_score.ToString();
