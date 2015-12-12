@@ -24,13 +24,13 @@ public class Bullet : MonoBehaviour
 	// private
 	private Rigidbody2D m_Rigidbody2D = null;
 
-	void Start()
+	void Awake()
 	{
 		m_Rigidbody2D = this.GetComponent<Rigidbody2D>() as Rigidbody2D;
 
 		Debug.Assert( m_Rigidbody2D, "Rigidbody2D component not found!", this.gameObject );
 		Debug.Assert( m_TagsToDeactivate.Length > 0, "Please fill a list of tags!", this.gameObject );
-		
+
 		// we use OnTriggerEnter2D method, so we should check the collider
 		// it should have isTrigger checkbox checked
 		Collider2D collider = this.GetComponent<Collider2D>() as Collider2D;

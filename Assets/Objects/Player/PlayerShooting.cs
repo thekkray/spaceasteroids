@@ -1,8 +1,14 @@
 ﻿using UnityEngine;
-using System.Collections;
+
+/// <summary>
+/// PlayerShooting
+/// Spawns bullet to point from m_GunTips array using ObjectsPool
+/// Controlled by Shoot method
+/// </summary>
 
 public class PlayerShooting : MonoBehaviour
 {
+	// conf
 	public PoolOfObjects m_BulletsPool = null;
 	public Transform[] m_GunTips;
 

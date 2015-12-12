@@ -1,15 +1,21 @@
 ﻿using UnityEngine;
-using System.Collections;
+
+/// <summary>
+/// PlayerControlling_Keyboard
+/// Controls PlayerMoving and PlayerShooting components using data from keyboard
+/// </summary>
 
 [RequireComponent( typeof( PlayerMoving ) )]
 [RequireComponent( typeof( PlayerShooting ) )]
 public class PlayerControlling_Keyboard : MonoBehaviour
 {
+	// conf
 	public KeyCode m_RotateRightKey = KeyCode.RightArrow;
 	public KeyCode m_RotateLeftKey = KeyCode.LeftArrow;
 	public KeyCode m_AccelerateKey = KeyCode.UpArrow;
 	public KeyCode m_ShootKey = KeyCode.LeftControl;
 
+	// private
 	private PlayerMoving m_PlayerMoving = null;
 	private PlayerShooting m_PlayerShooting = null;
 

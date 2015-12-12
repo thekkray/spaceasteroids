@@ -1,10 +1,19 @@
 ﻿using UnityEngine;
 
+/// <summary>
+/// PlayerMoving
+/// Rotates (around Z-axis) and moves (X,Y axes) an object kinematically using intertia vector
+/// Controlled by six start/stop methods
+/// </summary>
+
 public class PlayerMoving : MonoBehaviour
 {
+	// conf
 	public float m_RotationSpeed = 200.0f;
 	public float m_AccelerationForce = 8.00f;
+	public float m_DampingFactor = 0.10f;
 
+	// private
 	private bool m_RotatingLeft = false;
 	private bool m_RotatingRight = false;
 	private bool m_Accellerating = false;
@@ -16,6 +25,31 @@ public class PlayerMoving : MonoBehaviour
 	{
 		m_StartTransform = this.transform;
     }
+
+	void Update()
+	{
+		// Rotating
+		if( m_RotatingRight && !m_RotatingLeft )
+		{
+			this.transform.Rotate( Vector3.forward, -Time.deltaTime * m_RotationSpeed );
+		}
+		else
+		if( m_RotatingLeft && !m_RotatingRight )
+		{
+			this.transform.Rotate( Vector3.forward, Time.deltaTime * m_RotationSpeed );
+		}
+
+		// Moving
+		this.transform.Translate( m_Inertia * Time.deltaTime, Space.World );
+		if( m_Accellerating )
+		{
+			m_Inertia += this.transform.up * m_AccelerationForce * Time.deltaTime;
+		}
+		else
+		{
+			m_Inertia = Vector3.Lerp( m_Inertia, Vector3.zero, m_DampingFactor * Time.deltaTime );
+		}
+	}
 
 	public void StartRotation_Right()
 	{
@@ -44,30 +78,10 @@ public class PlayerMoving : MonoBehaviour
 		m_Accellerating = false;
 	}
 
-	void Update()
+	public void ResetToStartPosition()
 	{
-		this.transform.Translate( m_Inertia * Time.deltaTime, Space.World );
-
-		if( m_RotatingRight && !m_RotatingLeft )
-		{
-			this.transform.Rotate( Vector3.forward, -Time.deltaTime * m_RotationSpeed );
-		}
-
-		if( m_RotatingLeft && !m_RotatingRight )
-		{
-			this.transform.Rotate( Vector3.forward, Time.deltaTime * m_RotationSpeed );
-		}
-
-		if( m_Accellerating )
-		{
-			m_Inertia += this.transform.up * m_AccelerationForce * Time.deltaTime;
-		}
-	}
-
-	void ResetToStartPosition()
-	{
-		this.transform.position = m_StartTransform.position;
-		this.transform.rotation = m_StartTransform.rotation;
+		this.transform.localPosition = m_StartTransform.localPosition;
+		this.transform.localRotation= m_StartTransform.localRotation;
 		m_Inertia = Vector3.zero;
 	}
 

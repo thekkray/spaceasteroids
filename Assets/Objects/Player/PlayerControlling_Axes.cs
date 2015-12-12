@@ -1,14 +1,20 @@
 ﻿using UnityEngine;
-using System.Collections;
+
+/// <summary>
+/// PlayerControlling_Axes
+/// Controls PlayerMoving and PlayerShooting components using data from axes
+/// </summary>
 
 [RequireComponent( typeof( PlayerMoving ) )]
 [RequireComponent( typeof( PlayerShooting ) )]
 public class PlayerControlling_Axes : MonoBehaviour
 {
+	// conf
 	public string m_RotateAxis = "Horizontal";
 	public string m_AccelerateAxis = "Vertical";
 	public string m_ShootAxis = "Fire1";
 
+	// private
 	private PlayerMoving m_PlayerMoving = null;
 	private PlayerShooting m_PlayerShooting = null;
 
