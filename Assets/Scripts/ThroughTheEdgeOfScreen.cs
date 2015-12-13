@@ -10,12 +10,16 @@ public class ThroughTheEdgeOfScreen : MonoBehaviour
 	void Awake()
 	{
 		Debug.Assert( m_ObjectRadius != 0.00f, "Object's Radius is zero. Is it correct?" );
+	}
+
+	void Start()
+	{
 		Debug.Assert( Camera.main, "Camera.main is null!" );
 
 		if( Camera.main )
 		{
 			Debug.Assert( Camera.main.orthographic, "Camera is not orthographic!" );
-        }
+		}
 	}
 
 	void FixedUpdate()
