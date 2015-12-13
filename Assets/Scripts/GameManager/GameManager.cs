@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
 	public PlayerMoving m_PlayerMovingController = null;
 	public GameObject m_NewSessionFX = null;
 	public GameObject m_PlayerDeathFX = null;
-	public GameObject m_GameOverFX = null;
+	public GameObject m_GameOverScreen = null;
 
 	// private
 	private int m_CurrentSessionIndex = -1;
@@ -42,7 +42,7 @@ public class GameManager : MonoBehaviour
 		Debug.Assert( m_PlayerMovingController, "Assign a PlayerMoving on the Inspector!", this.gameObject );
 		Debug.Assert( m_NewSessionFX, "Assign a NewSessionFX object on the Inspector!", this.gameObject );
 		Debug.Assert( m_PlayerDeathFX, "Assign a PlayerDeathFX object on the Inspector!", this.gameObject );
-		Debug.Assert( m_GameOverFX, "Assign a GameOverFX object on the Inspector!", this.gameObject );
+		Debug.Assert( m_GameOverScreen, "Assign a GameOverScreen object on the Inspector!", this.gameObject );
 
 		if( m_ScoreUpdater )
 			m_ScoreUpdater.OnScoreChanged( m_CurrentScore );
@@ -69,11 +69,6 @@ public class GameManager : MonoBehaviour
 
 	void OnBulletHit( Bullet bullet, Collider2D other )
 	{
-		m_CurrentScore += m_ScoreForOneHit;
-
-		if( m_ScoreUpdater )
-			m_ScoreUpdater.OnScoreChanged( m_CurrentScore );
-
 		if( other )
 		{
 			Rock rock = other.GetComponent<Rock>() as Rock;
@@ -83,6 +78,14 @@ public class GameManager : MonoBehaviour
 
 				bullet.gameObject.SetActive( false );
 				rock.gameObject.SetActive( false );
+
+				m_CurrentScore += m_ScoreForOneHit;
+
+				if( m_CurrentScore > PlayerPrefsHelper.GetHighscore() )
+					PlayerPrefsHelper.SetHighscore( m_CurrentScore );
+
+				if( m_ScoreUpdater )
+					m_ScoreUpdater.OnScoreChanged( m_CurrentScore );
 			}
         }
 
@@ -95,10 +98,8 @@ public class GameManager : MonoBehaviour
 		{
 			other.gameObject.SetActive( false );
 
-			Debug.Log( "GameOver FX" );
-
-			if( m_GameOverFX )
-				m_GameOverFX.SetActive( true );
+			if( m_GameOverScreen )
+				m_GameOverScreen.SetActive( true );
 		}
 	}
 

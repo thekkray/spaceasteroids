@@ -19,11 +19,13 @@ public class PlayerMoving : MonoBehaviour
 	private bool m_Accellerating = false;
 
 	private Vector3 m_Inertia = Vector3.zero;
-	private Transform m_StartTransform;
+	private Vector3 m_StartPosition = Vector3.zero;
+	private Quaternion m_StartRotation = Quaternion.identity;
 
 	void Start()
 	{
-		m_StartTransform = this.transform;
+		m_StartPosition = this.transform.position;
+		m_StartRotation = this.transform.rotation;
     }
 
 	void Update()
@@ -80,8 +82,8 @@ public class PlayerMoving : MonoBehaviour
 
 	public void ResetToStartPosition()
 	{
-		this.transform.localPosition = m_StartTransform.localPosition;
-		this.transform.localRotation= m_StartTransform.localRotation;
+		this.transform.localPosition = m_StartPosition;
+		this.transform.localRotation = m_StartRotation;
 		m_Inertia = Vector3.zero;
 	}
 
