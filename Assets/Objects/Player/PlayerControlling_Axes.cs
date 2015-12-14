@@ -1,10 +1,5 @@
 ﻿using UnityEngine;
 
-/// <summary>
-/// PlayerControlling_Axes
-/// Controls PlayerMoving and PlayerShooting components using data from axes
-/// </summary>
-
 [RequireComponent( typeof( PlayerMoving ) )]
 [RequireComponent( typeof( PlayerShooting ) )]
 public class PlayerControlling_Axes : MonoBehaviour

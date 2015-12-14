@@ -1,11 +1,5 @@
 ﻿using UnityEngine;
 
-/// <summary>
-/// PlayerShooting
-/// Spawns bullet to point from m_GunTips array using ObjectsPool
-/// Controlled by Shoot method
-/// </summary>
-
 public class PlayerShooting : MonoBehaviour
 {
 	// conf

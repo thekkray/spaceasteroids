@@ -1,10 +1,5 @@
 ﻿using UnityEngine;
 
-/// <summary>
-/// PlayerPrefsHelper
-/// Helper class, stores all PlayerPrefs-keys and provides easy-to-use-methods
-/// </summary>
-
 public class PlayerPrefsHelper
 {
 	// private

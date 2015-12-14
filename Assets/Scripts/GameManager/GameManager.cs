@@ -1,11 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
-
-/// <summary>
-/// Game manager
-/// Spawns Rocks and Player
-/// Controlls progression through sessions, player death and fxs
-/// </summary>
 
 public class GameManager : MonoBehaviour
 {
@@ -113,8 +106,6 @@ public class GameManager : MonoBehaviour
 			if( m_LivesNum > 0 )
 			{
 				m_PlayerMovingController.ResetToStartPosition();
-				
-				// todo: start blink
 			}
 			else
 			{

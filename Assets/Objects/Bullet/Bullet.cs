@@ -1,13 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
-
-/// <summary>
-/// Bullet
-/// Moving using physics/rigidbody
-/// Applies StartForce to itself in OnEnable method (suitable for reusing/pooling)
-/// If collides with another object with tag from the list, then deactivates itself and another object
-/// (different types of Bullets hit different object, for example ice-bullets may be useless against fire-monsters)
-/// </summary>
 
 [RequireComponent( typeof( Rigidbody2D ) )]
 [RequireComponent( typeof( Collider2D ) )]

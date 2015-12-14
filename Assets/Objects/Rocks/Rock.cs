@@ -1,12 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
-
-/// <summary>
-/// Rock
-/// Moving using physics/rigidbody
-/// Applies random force with m_RandomForceMagnitude in OnEnable method
-/// Stores size of rock
-/// </summary>
 
 [RequireComponent( typeof( Rigidbody2D ) )]
 [RequireComponent( typeof( Collider2D ) )]

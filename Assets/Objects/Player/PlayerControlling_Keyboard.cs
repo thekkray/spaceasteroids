@@ -1,10 +1,5 @@
 ﻿using UnityEngine;
 
-/// <summary>
-/// PlayerControlling_Keyboard
-/// Controls PlayerMoving and PlayerShooting components using data from keyboard
-/// </summary>
-
 [RequireComponent( typeof( PlayerMoving ) )]
 [RequireComponent( typeof( PlayerShooting ) )]
 public class PlayerControlling_Keyboard : MonoBehaviour

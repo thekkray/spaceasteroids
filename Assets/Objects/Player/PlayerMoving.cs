@@ -1,11 +1,5 @@
 ﻿using UnityEngine;
 
-/// <summary>
-/// PlayerMoving
-/// Rotates (around Z-axis) and moves (X,Y axes) an object kinematically using intertia vector
-/// Controlled by six start/stop methods
-/// </summary>
-
 public class PlayerMoving : MonoBehaviour
 {
 	// conf
