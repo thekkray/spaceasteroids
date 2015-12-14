@@ -13,22 +13,21 @@ public class GameManager : MonoBehaviour
 	public PoolOfObjects m_PoolOfStartRocks = null;
 	public int m_StartRocksNum = 0;
 	public int m_RocksNumIncreaseStep = 0;
-
 	public Transform m_RockSpawnPointsParent = null;
+
 	public UpdateTextFmt m_ScoreUpdater = null;
 	public int m_ScoreForOneHit = 0;
+
 	public RockReplacementsRule[] m_ReplacementsRules;
 
 	public PlayerMoving m_PlayerMovingController = null;
-	public GameObject m_NewSessionFX = null;
-	public GameObject m_PlayerDeathFX = null;
 	public GameObject m_GameOverScreen = null;
 
 	// private
 	private int m_CurrentSessionIndex = -1;
 	private int m_CurrentScore = 0;
 	private int m_ActiveRocksNum = 0;
-	private bool m_GameStarted = false;
+	private bool m_GameStarted = false; // we need this flag, because we create Rock in advance and we should to know when we can start to count this
 
 	void Start()
 	{
@@ -40,8 +39,6 @@ public class GameManager : MonoBehaviour
 		Debug.Assert( m_ScoreUpdater, "Assign a ScoreUpdater on the Inspector!", this.gameObject );
 		Debug.Assert( m_ReplacementsRules.Length > 0, "Please fill ReplacementsRules array!", this.gameObject );
 		Debug.Assert( m_PlayerMovingController, "Assign a PlayerMoving on the Inspector!", this.gameObject );
-		Debug.Assert( m_NewSessionFX, "Assign a NewSessionFX object on the Inspector!", this.gameObject );
-		Debug.Assert( m_PlayerDeathFX, "Assign a PlayerDeathFX object on the Inspector!", this.gameObject );
 		Debug.Assert( m_GameOverScreen, "Assign a GameOverScreen object on the Inspector!", this.gameObject );
 
 		if( m_ScoreUpdater )
@@ -159,10 +156,5 @@ public class GameManager : MonoBehaviour
 
 		if( m_PlayerMovingController )
 			m_PlayerMovingController.ResetToStartPosition();
-
-		Debug.Log( "NewSessionFX" );
-
-		if( m_NewSessionFX )
-			m_NewSessionFX.SetActive( true );
 	}
 }
