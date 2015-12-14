@@ -6,6 +6,8 @@ this is my second try to make this task.
 First one was unsuccessfull, but after that my C++-test was ok, so I've decided to try Unity3D-test again
 several weeks of intensive learning of the technology and best practices.
 
+New solution is pretty different, so I hope it will meet PlaySoft's requirements.
+
 Unfortanutely I don't know what do reviewers dislike exactly in my previuous test, so this time I try to make the code
 so simple, transparent and easy to understand as I can. Also the project does not contain any extra graphics, effects and so on.
 I did it to make a review process simpler and faster. Also, each file contains small portions of notes where I explain
