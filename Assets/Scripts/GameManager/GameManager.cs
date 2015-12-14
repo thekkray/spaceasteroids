@@ -15,13 +15,17 @@ public class GameManager : MonoBehaviour
 	public int m_RocksNumIncreaseStep = 0;
 	public Transform m_RockSpawnPointsParent = null;
 
-	public UpdateTextFmt m_ScoreUpdater = null;
+	public UpdateTextFmt m_ScoreTextUpdater = null;
+	public UpdateTextFmt m_LivesTextUpdater = null;
 	public int m_ScoreForOneHit = 0;
-
-	public RockReplacementsRule[] m_ReplacementsRules;
 
 	public PlayerMoving m_PlayerMovingController = null;
 	public GameObject m_GameOverScreen = null;
+	public int m_LivesNum = 3;
+
+	public PoolOfObjects m_ExplosionsPool = null;
+
+	public RockReplacementsRule[] m_ReplacementsRules;
 
 	// private
 	private int m_CurrentSessionIndex = -1;
@@ -36,13 +40,17 @@ public class GameManager : MonoBehaviour
 		Debug.Assert( m_StartRocksNum != 0, "m_StartRocksNum should differ from zero!", this.gameObject );
 		Debug.Assert( m_RocksNumIncreaseStep != 0, "Rocks num should differ from zero!", this.gameObject );
 		Debug.Assert( m_ScoreForOneHit != 0, "ScoreForOneHit num should differ from zero!", this.gameObject );
-		Debug.Assert( m_ScoreUpdater, "Assign a ScoreUpdater on the Inspector!", this.gameObject );
+		Debug.Assert( m_ScoreTextUpdater, "Assign a ScoreUpdater on the Inspector!", this.gameObject );
+		Debug.Assert( m_LivesTextUpdater, "Assign a LifesTextUpdater on the Inspector!", this.gameObject );
 		Debug.Assert( m_ReplacementsRules.Length > 0, "Please fill ReplacementsRules array!", this.gameObject );
 		Debug.Assert( m_PlayerMovingController, "Assign a PlayerMoving on the Inspector!", this.gameObject );
 		Debug.Assert( m_GameOverScreen, "Assign a GameOverScreen object on the Inspector!", this.gameObject );
+		Debug.Assert( m_ExplosionsPool, "Assign an ExplosionsPool on the Inspector!", this.gameObject );
 
-		if( m_ScoreUpdater )
-			m_ScoreUpdater.UpdateText( m_CurrentScore );
+		if( m_ScoreTextUpdater )
+			m_ScoreTextUpdater.UpdateText( m_CurrentScore );
+		if( m_LivesTextUpdater )
+			m_LivesTextUpdater.UpdateText( m_LivesNum );
 
 		m_GameStarted = true;
 		StartNextSession();
@@ -71,6 +79,9 @@ public class GameManager : MonoBehaviour
 			Rock rock = other.GetComponent<Rock>() as Rock;
 			if( rock )
 			{
+				if( m_ExplosionsPool )
+					m_ExplosionsPool.Spawn( bullet.transform.position, bullet.transform.rotation );
+
 				OnRockDestroyed( rock );
 
 				bullet.gameObject.SetActive( false );
@@ -81,22 +92,37 @@ public class GameManager : MonoBehaviour
 				if( m_CurrentScore > PlayerPrefsHelper.GetHighscore() )
 					PlayerPrefsHelper.SetHighscore( m_CurrentScore );
 
-				if( m_ScoreUpdater )
-					m_ScoreUpdater.UpdateText( m_CurrentScore );
+				if( m_ScoreTextUpdater )
+					m_ScoreTextUpdater.UpdateText( m_CurrentScore );
 			}
         }
-
-		Debug.LogFormat( "TODO: fx at {0}", bullet.transform.position );
 	}
 
 	void OnRockHit( Rock rock, Collider2D other )
 	{
 		if( other.CompareTag("Player") )
 		{
-			other.gameObject.SetActive( false );
+			if( m_ExplosionsPool )
+				m_ExplosionsPool.Spawn( other.transform.position, other.transform.rotation );
 
-			if( m_GameOverScreen )
-				m_GameOverScreen.SetActive( true );
+			m_LivesNum--;
+
+			if( m_LivesTextUpdater )
+				m_LivesTextUpdater.UpdateText( m_LivesNum );
+
+			if( m_LivesNum > 0 )
+			{
+				m_PlayerMovingController.ResetToStartPosition();
+				
+				// todo: start blink
+			}
+			else
+			{
+				other.gameObject.SetActive( false );
+
+				if( m_GameOverScreen )
+					m_GameOverScreen.SetActive( true );
+			}
 		}
 	}
 
