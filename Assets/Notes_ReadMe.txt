@@ -11,9 +11,13 @@ so simple, transparent and easy to understand as I can. Also the project does no
 I did it to make a review process simpler and faster. Also, each file contains small portions of notes where I explain
 a purpose of a component or class.
 
-I understand that different companies have different preferences and requierements, so I am ready to change the test to make it 
-suitable for PlaySoft. Please let me know if you dislike any part of the project and I will change
-it immediately to meet your requirements.
+Feel free to contact me! I am ready to explain all choices I've made whild doing this test.
+Direct links vs SendMessage, differect ways to implement object-pooling, public fields vs ScriptableObject, etc.
 
+I understand that different companies have different preferences and requierements, so I am ready to change
+the test to make it  suitable for PlaySoft. Please let me know if you dislike any part of the project and I
+will change it to meet your requirements - I want to learn, to improve my skils, so I will be happy to hear
+advices from Unity-masters.
 
-
+Kind regards,
+Georgiy.
