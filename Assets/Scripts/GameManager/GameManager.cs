@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
 	public int m_RocksNumIncreaseStep = 0;
 
 	public Transform m_RockSpawnPointsParent = null;
-	public HighscoreTextUpdater m_ScoreUpdater = null;
+	public UpdateTextFmt m_ScoreUpdater = null;
 	public int m_ScoreForOneHit = 0;
 	public RockReplacementsRule[] m_ReplacementsRules;
 
@@ -45,7 +45,7 @@ public class GameManager : MonoBehaviour
 		Debug.Assert( m_GameOverScreen, "Assign a GameOverScreen object on the Inspector!", this.gameObject );
 
 		if( m_ScoreUpdater )
-			m_ScoreUpdater.OnScoreChanged( m_CurrentScore );
+			m_ScoreUpdater.UpdateText( m_CurrentScore );
 
 		m_GameStarted = true;
 		StartNextSession();
@@ -85,7 +85,7 @@ public class GameManager : MonoBehaviour
 					PlayerPrefsHelper.SetHighscore( m_CurrentScore );
 
 				if( m_ScoreUpdater )
-					m_ScoreUpdater.OnScoreChanged( m_CurrentScore );
+					m_ScoreUpdater.UpdateText( m_CurrentScore );
 			}
         }
 
