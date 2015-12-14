@@ -1,5 +1,9 @@
 ﻿using UnityEngine;
 
+// Notes:
+// Deactivates a gameobject it's connected to on leaving of screen
+// Uses current main Camera and awaits it will be in an orthographic mode
+
 public class DeactivateOnLeaveScreen : MonoBehaviour
 {
 	// objects radious for "out of the screen" detecting

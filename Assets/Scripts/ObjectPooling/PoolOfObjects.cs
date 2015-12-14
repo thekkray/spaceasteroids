@@ -1,6 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
+// Notes:
+// PoolOfObjects provides very simple way to handle object pooling
+// of objects of any time. The only think object MUST have is a
+// BackToPool_OnDisable component, and PoolOfObjects will check it and will
+// and the component if it's not added yet.
+// Configre pool using public fields and then use Spawn method in runtime
+
 public class PoolOfObjects : MonoBehaviour
 {
 	public GameObject m_ObjectPrefab = null;

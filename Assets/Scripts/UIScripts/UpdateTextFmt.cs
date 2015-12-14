@@ -1,6 +1,13 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
+// Notes:
+// Provides the way to update any UI-Text in runtime
+// Now provide only one method for one parameter of int type
+// but can be easily extended to work with a number of different
+// parameters
+// In this test-task I use this component to update player lives num and a current score
+
 [RequireComponent( typeof( Text ) )]
 public class UpdateTextFmt : MonoBehaviour
 {

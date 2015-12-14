@@ -1,5 +1,10 @@
 ﻿using UnityEngine;
 
+// Notes:
+// Contains almost all logic needed for Rocks. It may be split to several
+// independent component, but for such small game, I think, we can keep
+// all the logic for Rocks in one place.
+
 [RequireComponent( typeof( Rigidbody2D ) )]
 [RequireComponent( typeof( Collider2D ) )]
 public class Rock : MonoBehaviour

@@ -1,5 +1,10 @@
 ﻿using UnityEngine;
 
+// Notes:
+// PlayerMoving provides moving-logic without using physics
+// Frame-rate independtant speed, acceleration and damping confgurable
+// using public-fields
+
 public class PlayerMoving : MonoBehaviour
 {
 	// conf

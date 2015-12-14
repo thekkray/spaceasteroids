@@ -1,5 +1,10 @@
 ﻿using UnityEngine;
 
+// Notes:
+// Deactivates a gameobject it's connected to when ParticleSystem is
+// not alive anymore.
+// In AsteroidsTest I use to disable particle to let other component move it back to a pool
+
 [RequireComponent( typeof( ParticleSystem ) )]
 public class DeactivateOnParticlesFinished : MonoBehaviour
 {

@@ -1,5 +1,11 @@
 ﻿using UnityEngine;
 
+// Notes:
+// PlayerControlling_Axes controls PlayerMoving and PlayerShooting components
+// using direct links to component. I prefer to use direct links instead of SendMessage
+// if I know what component I'm going to control.
+// Compomenent is configurable in Ediator using it's public fields
+
 [RequireComponent( typeof( PlayerMoving ) )]
 [RequireComponent( typeof( PlayerShooting ) )]
 public class PlayerControlling_Axes : MonoBehaviour

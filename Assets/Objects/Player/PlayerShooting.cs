@@ -1,5 +1,10 @@
 ﻿using UnityEngine;
 
+// Notes:
+// PlayerMoving provides shooting-logic
+// Uses PoolOfObjects to spawn bullets, number and positions
+// of guns are configurable
+
 public class PlayerShooting : MonoBehaviour
 {
 	// conf

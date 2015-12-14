@@ -1,5 +1,10 @@
 ﻿using UnityEngine;
 
+// Notes:
+// If a gameobject it's component attached to tries to move out of the screen
+// then the component will bring it back to screen but from other side
+// Relies on Camera.main and awaits it will be in orthographic mode
+
 public class ThroughTheEdgeOfScreen : MonoBehaviour
 {
 	// objects radious for "out of the screen" detecting
