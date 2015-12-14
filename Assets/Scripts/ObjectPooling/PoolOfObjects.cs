@@ -44,9 +44,9 @@ public class PoolOfObjects : MonoBehaviour
 		return obj;
 	}
 
-	public void OnChildDisable( PoolableObject obj )
+	public void OnChildDisable( GameObject obj )
 	{
-		m_InactiveObjects.Enqueue( obj.gameObject );
+		m_InactiveObjects.Enqueue( obj );
 	}
 
 	public int GetActiveObjectsNum()
@@ -67,15 +67,15 @@ public class PoolOfObjects : MonoBehaviour
 				obj.transform.SetParent( m_ObjectsRoot );
 			}
 
-			PoolableObject po = obj.GetComponent<PoolableObject>() as PoolableObject;
-			if( po == null )
+			BackToPool_OnDisable comp = obj.GetComponent<BackToPool_OnDisable>() as BackToPool_OnDisable;
+			if( comp == null )
 			{
-				po = obj.AddComponent<PoolableObject>();
+				comp = obj.AddComponent<BackToPool_OnDisable>();
 			}
 
-			if( po != null )
+			if( comp != null )
 			{
-				po.m_PoolObject = this;
+				comp.m_Pool = this;
 			}
 		}
 
