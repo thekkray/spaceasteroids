@@ -1,5 +1,13 @@
 ﻿using UnityEngine;
 
+// Notes:
+// GameManager handles all the game logic.
+// Asteroids is pretty simple game, so we can use a single manager
+// for all core functions: all the game logic described with only 100 lines
+// For a big project this is impossible and collisions, effects, loading,
+// session managements, scoring, bonuses and all of other functions would
+// be placed in separated modules with a minimum connections in between.
+
 public class GameManager : MonoBehaviour
 {
 	// conf
